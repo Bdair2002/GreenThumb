@@ -1,0 +1,26 @@
+{
+  "name": "greenthumb",
+  "version": "1.0.0",
+  "description": "Empowering Urban Gardening and Sustainable Living",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bdair2002/GreenThumb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bdair2002/GreenThumb/issues"
+  },
+  "homepage": "https://github.com/Bdair2002/GreenThumb#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
