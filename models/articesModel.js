@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('.');
 const { PASSWORD } = require('../config/config');
 const { User } = require('./userModel');
-const Ariticle = sequelize.define('Ariticle', {
+const Article = sequelize.define('Article', {
     Article_ID: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -24,4 +24,4 @@ const Ariticle = sequelize.define('Ariticle', {
       }
 
 });
-module.exports = { Ariticle };
+module.exports = { Article };

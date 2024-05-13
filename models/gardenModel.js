@@ -1,0 +1,57 @@
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('.');
+const { PASSWORD } = require('../config/config');
+const { User } = require('./userModel');
+const Garden = sequelize.define('Garden', {
+  Garden_ID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true,
+    allowNull: false,
+  },
+
+  Name: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
+  },
+  OwnerID: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id',
+    },
+  },
+  Location: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  Plots: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  Sunlight: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
+  },
+  SoilType: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  WaterSource: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  Latitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  Longitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+});
+
+module.exports = { Garden };
