@@ -43,3 +43,4 @@ const Crops = sequelize.define('Crops', {
     allowNull: true,
   },
 });
+module.exports = { Crops };

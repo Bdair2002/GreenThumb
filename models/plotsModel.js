@@ -23,3 +23,4 @@ const Plots = sequelize.define('Plots', {
     allowNull: false,
   },
 });
+module.exports = { Plots };
