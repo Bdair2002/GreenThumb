@@ -9,4 +9,5 @@ router.get('/', gardenController.getAllGardens);
 router.get('/getMyGardens', gardenController.getMyGardens);
 router.get('/getGarden', gardenController.getGardenByName);
 router.delete('/deleteGarden', gardenController.deleteGarden);
+router.patch('/updateGarden', gardenController.updateMyGarden);
 module.exports = router;

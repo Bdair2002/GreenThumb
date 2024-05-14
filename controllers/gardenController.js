@@ -50,13 +50,42 @@ getGardenByName = catchAsync(async (req, res, next) => {
 deleteGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
   Name = req.body.Name;
-  const garden = await Garden.destroy({
+  const deletGarden = await Garden.destroy({
     where: { Name: Name, owner_id: currentUser },
   });
-  res.status(204).send({
-    status: 'Delete done.',
-    data: null,
-  });
+  res.status(204).send(deleteGarden);
+});
+updateMyGarden = catchAsync(async (req, res, next) => {
+  currentUser = req.user.id;
+  Name = req.body.Name;
+  const {
+    NewName,
+    Location,
+    Plots,
+    Sunlight,
+    SoilType,
+    WaterSource,
+    Latitude,
+    Longitude,
+  } = req.body;
+
+  const updateGarden = await Garden.update(
+    {
+      Name: NewName,
+      owner_id: req.user.id,
+      Location: Location,
+      Plots: Plots,
+      Sunlight: Sunlight,
+      SoilType: SoilType,
+      WaterSource: WaterSource,
+      Latitude: Latitude,
+      Longitude: Longitude,
+    },
+    {
+      where: { Name: Name, owner_id: currentUser },
+    },
+  );
+  res.status(201).send(updateGarden);
 });
 module.exports = {
   addGarden,
@@ -64,6 +93,5 @@ module.exports = {
   getMyGardens,
   getGardenByName,
   deleteGarden,
+  updateMyGarden,
 };
-//user
-//create garden //get gardens // get gerdent
