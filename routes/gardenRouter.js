@@ -1,5 +1,8 @@
 const express = require('express');
 const gardenController = require('./../controllers/gardenController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
-router.get('/test', gardenController.addProduct);
+
+router.use(authController.protect);
+
 module.exports = router;
