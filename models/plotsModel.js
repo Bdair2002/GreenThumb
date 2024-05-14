@@ -9,7 +9,6 @@ const Plots = sequelize.define('Plots', {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    unique: true,
     allowNull: false,
   },
   Garden_ID: {
@@ -17,12 +16,17 @@ const Plots = sequelize.define('Plots', {
     allowNull: false,
     references: {
       model: Garden,
-      key: 'Garden_ID',
+      key: 'id',
     },
   },
   Availabe: {
     type: DataTypes.BOOLEAN,
+    defaultValue: true,
     allowNull: false,
+  },
+  Crop: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
 });
 module.exports = { Plots };
