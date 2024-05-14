@@ -3,10 +3,10 @@ const { sequelize } = require('.');
 const { PASSWORD } = require('../config/config');
 const { User } = require('./userModel');
 const Garden = sequelize.define('Garden', {
-  Name: {
+  name: {
     type: DataTypes.STRING,
   },
-  OwnerID: {
+  owner_id: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {

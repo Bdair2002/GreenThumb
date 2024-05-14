@@ -4,10 +4,10 @@ const userRouter = require('./routes/userRouter');
 const gardenRouter = require('./routes/gardenRouter');
 const globalErrorHandler = require('./controllers/errorController');
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 
-app.use('/users', userRouter);
-app.use('/gardens', gardenRouter);
+app.use('/GreenThumb/v1/users', userRouter);
+app.use('/GreenThumb/v1/gardens', gardenRouter);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
