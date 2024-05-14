@@ -6,7 +6,7 @@ const { Garden } = require('./gardenModel');
 
 const Partnership = sequelize.define('Partnership', {
     Integration_ID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
@@ -19,19 +19,19 @@ const Partnership = sequelize.define('Partnership', {
         },        
       },
       OrganizationName: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Activities: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Price: {
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
       Date: {
-        type: Sequelize.DATEONLY
+        type: DataTypes.DATEONLY
       },
       Duration: {
-        type: Sequelize.INTEGER  
+        type: DataTypes.INTEGER  
       }
 
 });

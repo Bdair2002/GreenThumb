@@ -4,7 +4,7 @@ const { PASSWORD } = require('../config/config');
 const { User } = require('./userModel');
 const Resource = sequelize.define('Resource', {
     Tool_ID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
@@ -17,13 +17,13 @@ const Resource = sequelize.define('Resource', {
         },
       },
       Tools: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Sold: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
       },
       Description: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
 
 });
