@@ -6,7 +6,7 @@ const { Garden } = require('./gardenModel');
 
 const Event = sequelize.define('Event', {
     Event_ID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
@@ -19,10 +19,10 @@ const Event = sequelize.define('Event', {
         },        
       },
       Volunteers: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       Description: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
 
 });

@@ -4,7 +4,7 @@ const { PASSWORD } = require('../config/config');
 const { User } = require('./userModel');
 const Article = sequelize.define('Article', {
     Article_ID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
@@ -17,10 +17,10 @@ const Article = sequelize.define('Article', {
         },        
       },
       Title: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Description: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
 
 });
