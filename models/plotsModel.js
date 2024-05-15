@@ -19,7 +19,7 @@ const Plots = sequelize.define('Plots', {
       key: 'id',
     },
   },
-  Availabe: {
+  Available: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
     allowNull: false,

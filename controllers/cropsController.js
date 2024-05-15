@@ -21,20 +21,24 @@ addCrops = catchAsync(async (req, res, next) => {
   });
   const garden = await Gardens.findOne({ where: { id: plot.Garden_ID } });
   if (req.user.id === garden.owner_id) {
-    newCrop = await Crops.create({
-      Garden_ID: garden_id,
-      Plot_ID: plot_id,
-      Type: type,
-      Expected_Date: Expected_Date,
-      Planting_Date: Planting_Date,
-      Harvested_Date: Harvested_Date,
-    });
+    if (plot.Available) {
+      newCrop = await Crops.create({
+        Garden_ID: garden_id,
+        Plot_ID: plot_id,
+        Type: type,
+        Expected_Date: Expected_Date,
+        Planting_Date: Planting_Date,
+        Harvested_Date: Harvested_Date,
+      });
 
-    await Plots.update(
-      { Crop: type },
-      { where: { Garden_ID: garden_id, Plot_ID: plot_id } },
-    );
-    res.status(200).send(newCrop);
+      await Plots.update(
+        { Crop: type, Available: 0 },
+        { where: { Garden_ID: garden_id, Plot_ID: plot_id } },
+      );
+      res.status(200).send(newCrop);
+    } else {
+      res.status(401).send('This plot is not available');
+    }
   } else {
     res.status(401).send('You are not authorized to add crops to this plot');
   }
@@ -56,6 +60,10 @@ deleteCrop = catchAsync(async (req, res, next) => {
     });
 
     res.status(204).send({ status: 'success' });
+    const updatePlot = await Plots.update(
+      { Crop: null, Available: 1 },
+      { where: { Garden_ID: crop.Garden_ID, Plot_ID: crop.Plot_ID } },
+    );
   } else {
     res.status(401).send('You are not authorized to delete this crop');
   }

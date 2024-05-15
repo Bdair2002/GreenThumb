@@ -1,8 +1,10 @@
 const db = require('./../models/plotsModel');
 const catchAsync = require('../utils/catchAsync');
 const db1 = require('./../models/gardenModel');
+const db2 = require('./../models/cropsModel');
 const crud = require('./crudController');
 const gardenController = require('./gardenController');
+const Crops = db2.Crops;
 const Plots = db.Plots;
 const Garden = db1.Garden;
 
@@ -63,6 +65,9 @@ deletePlot = catchAsync(async (req, res, next) => {
   console.log('plots  :' + garden.Plots);
   console.log(garden.owner_id);
   if (garden.owner_id === req.user.id) {
+    const deleteCrop = await Crops.destroy({
+      where: { Plot_ID: plot_id },
+    });
     const deletePlot = await Plots.destroy({
       where: { Plot_ID: plot_id },
     });
