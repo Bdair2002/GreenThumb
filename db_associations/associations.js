@@ -19,11 +19,11 @@ Resource.belongsTo(User, { foreignKey: 'OwnerID' });
 Event.hasMany(User, { foreignKey: { name: 'EventID', allowNull: true } });
 User.belongsTo(Event, { foreignKey: { name: 'EventID', allowNull: true } });
 
-Garden.belongsTo(Plots, {
-  foreignKey: 'owner_id',
-});
 Plots.belongsTo(Garden, {
-  foreignKey: 'owner_id',
+  foreignKey: { name: 'Garden_ID' },
+});
+Garden.hasMany(Plots, {
+  foreignKey: { name: 'Garden_ID' },
 });
 
 Plots.hasMany(Crops, { foreignKey: 'Plot_ID' });

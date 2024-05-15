@@ -21,7 +21,7 @@ addGarden = catchAsync(async (req, res, next) => {
     Name: Name,
     owner_id: req.user.id,
     Location: Location,
-    Plots: Plots,
+    PlotsNumber: Plots,
     Sunlight: Sunlight,
     SoilType: SoilType,
     WaterSource: WaterSource,
