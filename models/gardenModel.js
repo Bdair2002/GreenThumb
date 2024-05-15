@@ -16,7 +16,7 @@ const Garden = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    Plots: {
+    PlotsNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
