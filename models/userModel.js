@@ -3,7 +3,9 @@ const { sequelize } = require('.');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 const crypto = require('crypto');
+const { Event } = require('./eventsModel');
 const AppError = require('../utils/appError');
+
 const User = sequelize.define(
   'User',
   {
@@ -69,14 +71,10 @@ const User = sequelize.define(
     //   defaultValue: true,
     //   select: false,
     // },
-    // EventID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   references: {
-    //     model: Event,
-    //     key: 'id',
-    //   },
-    // },
+    Event_ID: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     indexes: [

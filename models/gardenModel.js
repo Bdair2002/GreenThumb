@@ -12,10 +12,6 @@ const Garden = sequelize.define(
     owner_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: User,
-        key: 'id',
-      },
     },
     Location: {
       type: DataTypes.STRING,
