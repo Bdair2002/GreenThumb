@@ -2,32 +2,21 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('.');
 const { PASSWORD } = require('../config/config');
 const { User } = require('./userModel');
-const { Garden } = require('./gardenModel');
-
-const Partnership = sequelize.define('Partnership', {
-  Integration_ID: {
+const Article = sequelize.define('Article', {
+  Article_ID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  Garden_ID: {
+  Publisher_ID: {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  OrganizationName: {
+  Title: {
     type: DataTypes.STRING,
   },
-  Activities: {
+  Description: {
     type: DataTypes.STRING,
-  },
-  Price: {
-    type: DataTypes.FLOAT,
-  },
-  Date: {
-    type: DataTypes.DATE,
-  },
-  Duration: {
-    type: DataTypes.INTEGER,
   },
 });
-module.exports = { Partnership };
+module.exports = { Article };
