@@ -14,7 +14,12 @@ const Plots = sequelize.define('Plots', {
   },
   Availabe: {
     type: DataTypes.BOOLEAN,
+    defaultValue: true,
     allowNull: false,
+  },
+  Crop: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
 });
 module.exports = { Plots };
