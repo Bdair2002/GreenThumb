@@ -10,7 +10,6 @@ const Crops = sequelize.define('Crops', {
     type: 'integer',
     primaryKey: true,
     autoIncrement: true,
-    unique: true,
     allowNull: false,
   },
   Garden_ID: {

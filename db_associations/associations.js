@@ -7,8 +7,8 @@ const { Plots } = require('../models/plotsModel');
 const { Resource } = require('../models/resourcesModel');
 const { User } = require('../models/userModel');
 
-User.hasMany(Garden, { foreignKey: 'owner_id:' });
-Garden.belongsTo(User, { foreignKey: 'owner_id:' });
+User.hasMany(Garden, { foreignKey: 'owner_id' });
+Garden.belongsTo(User, { foreignKey: 'owner_id' });
 
 User.hasMany(Article, { foreignKey: 'Publisher_ID' });
 Article.belongsTo(User, { foreignKey: 'Publisher_ID' });
@@ -19,8 +19,13 @@ Resource.belongsTo(User, { foreignKey: 'OwnerID' });
 Event.hasMany(User, { foreignKey: { name: 'EventID', allowNull: true } });
 User.belongsTo(Event, { foreignKey: { name: 'EventID', allowNull: true } });
 
-Garden.hasMany(Plots, { foreignKey: 'Garden_ID', as: 'GardenPlots' });
-Plots.belongsTo(Garden, { foreignKey: 'Garden_ID', as: 'GardenPlots' });
+Plots.belongsTo(Garden, {
+  foreignKey: { name: 'Garden_ID' },
+});
+Garden.hasMany(Plots, {
+  foreignKey: { name: 'Garden_ID' },
+});
+
 Plots.hasMany(Crops, { foreignKey: 'Plot_ID' });
 Crops.belongsTo(Plots, { foreignKey: 'Plot_ID' });
 
