@@ -9,7 +9,7 @@ exports.weatherlatlon = async (req, res) => {
 
     let lat = '';
     let lon = '';
-    if (id === '1') {
+    if (id === '2') {
         lat = 32.319199;  
         lon = 35.064320;  
     } else {
