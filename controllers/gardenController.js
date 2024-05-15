@@ -73,7 +73,8 @@ deleteGarden = catchAsync(async (req, res, next) => {
   const deletGarden = await Garden.destroy({
     where: { Name: Name, owner_id: currentUser },
   });
-  res.status(204).send(deleteGarden);
+
+  res.status(204).send({ status: 'success' });
 });
 updateMyGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
