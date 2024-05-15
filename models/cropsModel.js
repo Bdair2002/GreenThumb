@@ -10,7 +10,6 @@ const Crops = sequelize.define('Crops', {
     type: 'integer',
     primaryKey: true,
     autoIncrement: true,
-    unique: true,
     allowNull: false,
   },
   Garden_ID: {
@@ -24,10 +23,6 @@ const Crops = sequelize.define('Crops', {
   Plot_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: Plots,
-      key: 'Plot_ID',
-    },
   },
   Type: {
     type: DataTypes.STRING,

@@ -7,22 +7,16 @@ const Garden = sequelize.define(
   {
     Name: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     owner_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: User,
-        key: 'id',
-      },
     },
     Location: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    Plots: {
+    PlotsNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

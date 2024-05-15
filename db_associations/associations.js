@@ -1,57 +1,40 @@
-const { User, Garden , Resource , Event , Article , Partnership , Crops , Plots} = require('../models');
+const { Article } = require('../models/articlesModel');
+const { Crops } = require('../models/cropsModel');
+const { Event } = require('../models/eventsModel');
+const { Garden } = require('../models/gardenModel');
+const { Partnership } = require('../models/partnershipModel');
+const { Plots } = require('../models/plotsModel');
+const { Resource } = require('../models/resourcesModel');
+const { User } = require('../models/userModel');
 
+User.hasMany(Garden, { foreignKey: 'owner_id' });
+Garden.belongsTo(User, { foreignKey: 'owner_id' });
 
-
-
-User.hasMany(Garden, { foreignKey: 'OwnerID' });
-Garden.belongsTo(User, { foreignKey: 'OwnerID', as: 'User' });
-
-
-User.hasMany(Article, { foreignKey: 'OwnerID' });
-Article.belongsTo(User, { foreignKey: 'OwnerID', as: 'User'  });
-
+User.hasMany(Article, { foreignKey: 'Publisher_ID' });
+Article.belongsTo(User, { foreignKey: 'Publisher_ID' });
 
 User.hasMany(Resource, { foreignKey: 'OwnerID' });
-Resource.belongsTo(User, { foreignKey: 'OwnerID', as: 'User'  });
+Resource.belongsTo(User, { foreignKey: 'OwnerID' });
 
+Event.hasMany(User, { foreignKey: { name: 'EventID', allowNull: true } });
+User.belongsTo(Event, { foreignKey: { name: 'EventID', allowNull: true } });
 
-User.hasMany(Event, { foreignKey: 'UserID' });//////I don't know if it's true or not
+Plots.belongsTo(Garden, {
+  foreignKey: { name: 'Garden_ID' },
+});
+Garden.hasMany(Plots, {
+  foreignKey: { name: 'Garden_ID' },
+});
 
-
-
-
-
-Garden.hasMany(Plots, { foreignKey: 'Garden_ID' });
-Plots.belongsTo(Garden, { foreignKey: 'Garden_ID' });
-
-
-Garden.hasMany(Crops, { foreignKey: 'Garden_ID' });
-Crops.belongsTo(Garden, { foreignKey: 'Garden_ID' });
-
-
-Garden.hasMany(Event, { foreignKey: 'Garden_ID' });
-Event.belongsTo(Garden, { foreignKey: 'Garden_ID' });
-
-
-Garden.hasMany(Partnership, { foreignKey: 'Garden_ID' });
-Partnership.belongsTo(Garden, { foreignKey: 'Garden_ID' });
-
-
-
-
-
-
-
-
-
-/*$$$$$$$$$$<Crop associaitions>$$$$$$$$$$$$*/
+Plots.hasMany(Crops, { foreignKey: 'Plot_ID' });
 Crops.belongsTo(Plots, { foreignKey: 'Plot_ID' });
 
+Garden.hasMany(Event, { foreignKey: { name: 'Garden_ID', allowNull: true } });
+Event.belongsTo(Garden, { foreignKey: { name: 'Garden_ID', allowNull: true } });
 
-
-
-/*$$$$$$$$$$<Plot associaitions>$$$$$$$$$$$$*/
-Plots.hasOne(Crops, { foreignKey: 'Plot_ID' });
-
-
-
+Garden.hasMany(Partnership, {
+  foreignKey: { name: 'Garden_ID', allowNull: true },
+});
+Partnership.belongsTo(Garden, {
+  foreignKey: { name: 'Garden_ID', allowNull: true },
+});

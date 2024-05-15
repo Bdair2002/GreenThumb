@@ -1,8 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('.');
-const { PASSWORD } = require('../config/config');
-const { User } = require('./userModel');
-const { Garden } = require('./gardenModel');
 
 const Plots = sequelize.define('Plots', {
   Plot_ID: {
@@ -14,10 +11,6 @@ const Plots = sequelize.define('Plots', {
   Garden_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: Garden,
-      key: 'id',
-    },
   },
   Available: {
     type: DataTypes.BOOLEAN,

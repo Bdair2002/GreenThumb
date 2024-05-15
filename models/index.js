@@ -12,7 +12,7 @@ catchAsync(async (req, res, next) => {
 
 const db = {};
 db.sequelize = sequelize;
-db.sequelize.sync({ force: false, alter: true }).then(() => {
+db.sequelize.sync({ force: true, alter: true }).then(() => {
   console.log('Synced');
 });
 module.exports = db;
