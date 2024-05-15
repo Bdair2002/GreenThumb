@@ -8,10 +8,12 @@ const associations = require('./db_associations/associations');
 const weatherRouter = require('./routes/externalapiRouter'); 
 
 const globalErrorHandler = require('./controllers/errorController');
+const cropsRouter = require('./routes/cropsRouter');
 const app = express();
 app.use(express.json({ limit: '10kb' }));
 
 app.use('/GreenThumb/v1/users', userRouter);
+app.use('/GreenThumb/v1/crops', cropsRouter);
 app.use('/GreenThumb/v1/gardens', gardenRouter);
 app.use('/GreenThumb/v1/plots', plotsRouter);
 app.use('/GreenThumb/v1/events', eventsRouter);

@@ -12,7 +12,7 @@ const Plots = sequelize.define('Plots', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  Availabe: {
+  Available: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
     allowNull: false,
