@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "databaseMAC": "docker run -p 3306:3306 -v /Users/yazanmansour/DockerVolume/SqlData:/var/lib/mysql -d mysql_db",
+    "databaseMAC": "docker run -p 3306:3306 -v ./DockerVolume/SqlData:/var/lib/mysql -d mysql_db",
     "database": "docker run -p 3306:3306 -v C:/DockerVolume/SqlData:/var/lib/mysql -d mysql_db"
   },
   "repository": {
