@@ -11,7 +11,6 @@ const Garden = sequelize.define(
     },
     owner_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     Location: {
       type: DataTypes.STRING,
