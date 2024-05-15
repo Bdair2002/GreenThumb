@@ -18,7 +18,7 @@ const Crops = sequelize.define('Crops', {
     allowNull: false,
     references: {
       model: Garden,
-      key: 'Garden_ID',
+      key: 'id',
     },
   },
   Plot_ID: {
