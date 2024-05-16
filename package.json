@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "database": "docker run -p 3306:3306 -v /Users/yazanmansour/DockerVolume/SqlData:/var/lib/mysql -d mysql_db"
+    "databaseMAC": "docker run -p 3306:3306 -v ./DockerVolume/SqlData:/var/lib/mysql -d mysql_db",
+    "database": "docker run -p 3306:3306 -v C:/DockerVolume/SqlData:/var/lib/mysql -d mysql_db"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Bdair2002/GreenThumb#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",

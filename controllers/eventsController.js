@@ -1,9 +1,8 @@
-const db = require('./../models/eventsModel');
-const Event = db.Event;
-const addEvent = async (req, res) => {
-  const event = await Event.create({ name: 'test', OwnerID: 1 });
-  res.status(200).send(event);
-};
-module.exports = {
-  addEvent,
-};
+const crypto = require('crypto');
+const { promisify } = require('util');
+const jwt = require('jsonwebtoken');
+const { Event } = require('./../models/eventsModel');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
+const sendEmail = require('./../utils/email');
+const { Op } = require('sequelize');
