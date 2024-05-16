@@ -1,5 +1,11 @@
 const express = require('express');
 const plotsController = require('./../controllers/plotsController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
-router.get('/test', plotsController.addProduct);
+router.use(authController.protect);
+router.get('/', plotsController.getAllPlots);
+router.patch('/updatePlot', plotsController.updatePlot);
+router.get('/getPlotByGardenID', plotsController.getPlotByGardenID);
+router.get('/getPlotByID', plotsController.getPlotByID);
+router.delete('/deletePlot', plotsController.deletePlot);
 module.exports = router;
