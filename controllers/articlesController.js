@@ -18,10 +18,10 @@ const addArticle = async (req, res) => {
       Title: Title,
       Description: Description,  
     });
-    res.status(201).send(Article);
+    res.status(201).json({message: 'Article created successfully, ' + Article + ''});
  }
  catch (error) {
-  res.status(400).sendStatus(400).send(console.error(error));
+  res.status(409).json({message : 'There is a Article with same Article_ID already exists'});
 }
 };
 
@@ -42,7 +42,12 @@ const updateArticle = async (req, res) => {
         Description: Description,
       },
       {where:{Publisher_ID: Publisher_ID, Article_ID: Article_ID}});
-    res.status(200).send(Article);
+      if(Article != 0)
+        res.status(200).json({message: ' The Article with Article_ID: ' + Article_ID + ' updated Successfully'});
+      else
+      {
+        res.status(400).json({message : 'No Article with Article_ID: ' + Article_ID +' and Publisher_ID: '+ Publisher_ID + ' to update'});
+      }
   }
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
@@ -64,7 +69,12 @@ const updateArticleTitle = async (req, res) => {
         Title: Title,
       },
       {where:{Publisher_ID: Publisher_ID, Article_ID: Article_ID}});
-    res.status(200).send(Article);
+      if(Article != 0)
+        res.status(200).json({message: ' The Title for Article with Article_ID: ' + Article_ID + ' updated Successfully'});
+      else
+      {
+        res.status(400).json({message : 'No Article found with Article_ID ' + Article_ID +' and Publisher_ID ' + Publisher_ID + ' to update!'});
+      }
   }
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
@@ -86,7 +96,12 @@ const updateArticleDescription = async (req, res) => {
         Description: Description,
       },
       {where:{Publisher_ID: Publisher_ID, Article_ID: Article_ID}});
-    res.status(200).send(Article);
+      if(Article != 0)
+        res.status(200).json({message: ' The Description for Article with Article_ID: ' + Article_ID + ' updated Successfully'});
+      else
+      {
+        res.status(400).json({message : 'No Article found with Article_ID ' + Article_ID +' and Publisher_ID ' + Publisher_ID + ' to update!'});
+      }
   }
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
@@ -105,7 +120,12 @@ const deleteArticle = async (req, res) => {
         ({
           Article_ID: Article_ID,
         })
-      res.status(200).sendStatus(200);
+        if(Article === 0)
+          res.status(400).json({message : 'Article not found for Article_ID ' + Article_ID + ''});
+        else
+        {
+          res.status(200).json({message : 'Article with Article_ID ' + Article_ID +' deleted successfully'});
+        }
   }
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
@@ -124,7 +144,12 @@ const findArticleOwner = async (req, res) => {
     ({
         Publisher_ID: Publisher_ID
     })
-    res.status(200).send(Article);
+    if(Article  != 0)
+      res.status(200).send(Article);
+    else
+    {
+      res.status(400).json({message: 'Article not found for Publisher_ID: '+ Publisher_ID +' '});
+    }
    }
    catch (error) {
      res.status(400).sendStatus(400).send(console.error(error));
@@ -143,7 +168,12 @@ const findArticle = async (req, res) => {
     ({
       Article_ID: Article_ID
     })
-    res.status(200).send(Article);
+    if(Article != 0)
+      res.status(200).send(Article);
+    else
+    {
+      res.status(400).json({message: 'Article not found with Article ID: ' + Article_ID +' '});
+    }  
   } 
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
@@ -160,7 +190,13 @@ const findAllArticle = async (req, res) => {
         ['Article_ID', 'ASC']
       ]
     })
-    res.status(200).send(Article);
+    if(Article != 0)
+      res.status(200).send(Article);
+
+    else
+    {
+      res.status(400).json({message: 'There is no Articles in the Database'});
+    }
   }
   catch (error) {
     res.status(400).sendStatus(400).send(console.error(error));
