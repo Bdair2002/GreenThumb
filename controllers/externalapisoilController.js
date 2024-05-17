@@ -18,7 +18,7 @@ exports.soillatlon = async (req, res) => {
 
         const { Latitude, Longitude } = garden;
         
-        const apiUrl = `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${Longitude}&lat=${Latitude}`;
+        const apiUrl = `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${Longitude}&lat=${Latitude}&property=clay&property=sand&depth=0-5cm&value=mean&value=uncertainty`;
         const response = await axios.get(apiUrl);
         
         res.status(200).json({ garden, soilData: response.data });
