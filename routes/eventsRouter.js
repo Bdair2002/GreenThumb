@@ -1,5 +1,12 @@
-const eventsController = require('./../controllers/eventsController');
 const express = require('express');
-
+const eventsController = require('./../controllers/eventsController');
 const router = express.Router();
+router.post('/addEvent', eventsController.addEvent);
+router.patch('/updateEvent', eventsController.updateEvent);
+router.patch('/updateEventVolunteers', eventsController.updateEventVolunteers);
+router.patch('/updateEventDescription', eventsController.updateEventDescription);
+router.delete('/deleteEvent', eventsController.deleteEvent);
+router.get('/findEvent', eventsController.findEvents);
+router.get('/findEventGardenID', eventsController.findEventsGardenID);
+router.get('/findEventEventID', eventsController.findEventsEventID);
 module.exports = router;

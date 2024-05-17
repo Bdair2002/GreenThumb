@@ -1,5 +1,12 @@
 const express = require('express');
 const cropsController = require('./../controllers/cropsController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
-router.get('/test', cropsController.addProduct);
+router.use(authController.protect);
+router.post('/addCrop', cropsController.addCrops);
+router.delete('/deleteCrop', cropsController.deleteCrop);
+router.patch('/updateCrop', cropsController.updateCrop);
+router.get('/', cropsController.getAllCrops);
+router.get('/getByGardenID', cropsController.getByGardenID);
+router.get('/getByPlotID', cropsController.getByPlotID);
 module.exports = router;

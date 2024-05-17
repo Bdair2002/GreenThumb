@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Bdair2002/GreenThumb#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
