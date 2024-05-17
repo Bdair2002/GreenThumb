@@ -5,6 +5,6 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.use(authController.protect);
-router.get('/weather/latlon', fetchWeatherDataController.weatherlatlon);
-router.get('/weather/city', fetchWeatherDataController.weathercity);
+router.get('/latlon', fetchWeatherDataController.weatherlatlon);
+router.get('/city', fetchWeatherDataController.weathercity);
 module.exports = router;
