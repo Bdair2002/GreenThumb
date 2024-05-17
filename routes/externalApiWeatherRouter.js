@@ -1,6 +1,6 @@
 const express = require('express');
-const fetchWeatherDataController = require('../controllers/externalapiController'); 
-const authController = require('./../controllers/authController');
+const fetchWeatherDataController = require('../controllers/externalapiWeatherController'); 
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 

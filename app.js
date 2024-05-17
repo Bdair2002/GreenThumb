@@ -5,7 +5,7 @@ const gardenRouter = require('./routes/gardenRouter');
 const plotsRouter = require('./routes/plotsRouter');
 const eventsRouter = require('./routes/eventsRouter');
 const associations = require('./db_associations/associations');
-const weatherRouter = require('./routes/externalapiRouter'); 
+const weatherRouter = require('./routes/externalApiWeatherRouter'); 
 
 const globalErrorHandler = require('./controllers/errorController');
 const app = express();

@@ -1,4 +1,4 @@
-const db = require('./../models/gardenModel');
+const db = require('../models/gardenModel');
 const catchAsync = require('../utils/catchAsync');
 const axios = require('axios');
 const Garden = db.Garden;
