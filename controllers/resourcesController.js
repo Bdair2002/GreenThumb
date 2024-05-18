@@ -1,5 +1,4 @@
 const db = require('./../models/resourcesModel');
-const catchAsync = require('../utils/catchAsync');
 const resource = db.Resource;
 
 const addResource = async (req, res) => {

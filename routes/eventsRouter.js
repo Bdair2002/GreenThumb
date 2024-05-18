@@ -1,10 +1,13 @@
 const express = require('express');
 const eventsController = require('./../controllers/eventsController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
+router.use(authController.protect);
 router.post('/addEvent', eventsController.addEvent);
-router.patch('/updateEvent', eventsController.updateEvent);
-router.patch('/updateEventVolunteers', eventsController.updateEventVolunteers);
-router.patch('/updateEventDescription', eventsController.updateEventDescription);
+router.put('/reserveGarden', eventsController.reserveGarden);
+router.put('/updateEventVolunteers', eventsController.updateEventVolunteers);
+router.put('/updateEventDeleteVolunteers', eventsController.updateEventDeleteVolunteers);
+router.put('/updateEventDescription', eventsController.updateEventDescription);
 router.delete('/deleteEvent', eventsController.deleteEvent);
 router.get('/findEvent', eventsController.findEvents);
 router.get('/findEventGardenID', eventsController.findEventsGardenID);

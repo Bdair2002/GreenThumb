@@ -1,6 +1,9 @@
 const express = require('express');
 const resourcesController = require('./../controllers/resourcesController');
+const authController = require('./../controllers/authController');
+
 const router = express.Router();
+router.use(authController.protect);
 router.post('/addResource', resourcesController.addResource);
 router.patch('/updateResource', resourcesController.updateResource);
 router.put('/updateResourceDescription', resourcesController.updateResourceDescription);
