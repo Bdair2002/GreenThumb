@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "databaseMAC": "docker run -p 3306:3306 -v ./DockerVolume/SqlData:/var/lib/mysql -d mysql_db",
-    "database": "docker run -p 3306:3306 -v C:/DockerVolume/SqlData:/var/lib/mysql -d mysql_db"
+    "database": "docker run -p 3306:3306 -v C:/DockerVolume/SqlData:/var/lib/mysql -d mysql_db",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,13 +22,19 @@
   },
   "homepage": "https://github.com/Bdair2002/GreenThumb#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "mysql2": "^3.9.7",
     "nodemailer": "^6.9.13",
+    "pug": "^3.0.2",
     "sequelize": "^6.37.3",
     "validator": "^13.12.0"
   },
@@ -40,6 +48,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
     "nodemon": "^3.1.0",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^3.2.5"
   }
 }
