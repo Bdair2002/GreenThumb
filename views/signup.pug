@@ -2,6 +2,7 @@ extends base
 
 block content
   main.main
+    img(src='/img/logo-img.png' alt='GreenThumb logo2').logo
     .login-form
       h2.login_text Sign up
       form.form.form--signup
@@ -25,3 +26,4 @@ block content
           input#passwordconfirm.form__input(type='password', placeholder='••••••••', required)  
         .form__group
           button#signup_primary Sign up
+      button#btn_cancel Cancel

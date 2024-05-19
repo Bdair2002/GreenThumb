@@ -12,7 +12,7 @@ export const login = async (email, password) => {
     if (res.data.status === 'success') {
       console.log('Logged in');
       window.setTimeout(() => {
-        location.assign('/Gardens');
+        location.assign('/gardens');
       }, 1500);
     }
   } catch (err) {
@@ -45,7 +45,7 @@ export const signup = async (
     if (res.data.status === 'success') {
       console.log('Logged in');
       window.setTimeout(() => {
-        location.assign('/Gardens');
+        location.assign('/gardens');
       }, 1500);
     }
   } catch (err) {

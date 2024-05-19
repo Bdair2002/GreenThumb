@@ -5488,7 +5488,7 @@ var login = exports.login = /*#__PURE__*/function () {
           if (res.data.status === 'success') {
             console.log('Logged in');
             window.setTimeout(function () {
-              location.assign('/Gardens');
+              location.assign('/gardens');
             }, 1500);
           }
           _context.next = 10;
@@ -5533,7 +5533,7 @@ var signup = exports.signup = /*#__PURE__*/function () {
           if (res.data.status === 'success') {
             console.log('Logged in');
             window.setTimeout(function () {
-              location.assign('/Gardens');
+              location.assign('/gardens');
             }, 1500);
           }
           _context2.next = 12;
@@ -5569,6 +5569,13 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('signup_button').addEventListener('click', function () {
     window.setTimeout(function () {
       location.assign('/signup_page');
+    }, 1500);
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('btn_cancel').addEventListener('click', function () {
+    window.setTimeout(function () {
+      location.assign('/');
     }, 1500);
   });
 });
@@ -5616,7 +5623,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50374" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52976" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

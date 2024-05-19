@@ -35,7 +35,7 @@ addGarden = catchAsync(async (req, res, next) => {
 getAllGardens = crud.getAll(Garden);
 
 getMyGardens = catchAsync(async (req, res, next) => {
-  const myGarden = await Garden.findOne({
+  const myGarden = await Garden.findAll({
     where: { owner_id: req.user.id },
   });
   res.status(200).send(myGarden);

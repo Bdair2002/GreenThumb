@@ -13,7 +13,6 @@ const partnershipRouter = require('./routes/partnershipRouter');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
-const helmet = require('helmet');
 const app = express();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(helmet());
 app.use(cookieParser());
 app.use(express.json({ limit: '10kb' }));
 

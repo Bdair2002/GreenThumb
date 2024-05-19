@@ -1,0 +1,14 @@
+extends base
+
+
+block append head
+  script(src='https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css' rel='stylesheet')
+
+
+block content
+    h1=garden.Name
+    section.section-map
+      #map
+    script.
+      var garden = !{JSON.stringify(garden)};

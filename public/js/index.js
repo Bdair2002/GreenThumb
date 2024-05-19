@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 1500);
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('btn_cancel').addEventListener('click', function () {
+    window.setTimeout(() => {
+      location.assign('/');
+    }, 1500);
+  });
+});
 const loginForm = document.querySelector('.form--login');
 if (loginForm)
   loginForm.addEventListener('submit', (e) => {
