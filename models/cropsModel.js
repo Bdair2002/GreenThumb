@@ -15,6 +15,10 @@ const Crops = sequelize.define('Crops', {
   Garden_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: Garden,
+      key: 'id',
+    },
   },
   Plot_ID: {
     type: DataTypes.INTEGER,
