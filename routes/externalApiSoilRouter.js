@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.use(authController.protect);
 router.get('/latlon', fetchsoilDataController.soillatlon);
+router.get('/plants', fetchsoilDataController.allplants);
 module.exports = router;

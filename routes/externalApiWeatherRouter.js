@@ -7,4 +7,5 @@ const router = express.Router();
 router.use(authController.protect);
 router.get('/latlon', fetchWeatherDataController.weatherlatlon);
 router.get('/city', fetchWeatherDataController.weathercity);
+router.get('/climate', fetchWeatherDataController.ClimateData);
 module.exports = router;
