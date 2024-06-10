@@ -107,7 +107,7 @@ getRotation = catchAsync(async (req, res, next) => {
 
 plantCrop = catchAsync(async (req, res, next) => {
   plot_id = req.params.id;
-  const Crop = req.params.Type;
+  const Crop = req.body.Type;
   const available = await Plots.findOne({ where: { Plot_ID: plot_id } });
   if (available.Available) {
     const currentDate = new Date();

@@ -5,8 +5,8 @@ const router = express.Router();
 router.use(authController.protect);
 router.get('/', plotsController.getAllPlots);
 router.patch('/', plotsController.updatePlot);
-router.patch('/:id/harvest', plotsController.harvestPlot);
-router.patch('/:id/plant/:Type', plotsController.plantCrop);
+router.patch('/:id/Crops', plotsController.harvestPlot);
+router.post('/:id/Crops', plotsController.plantCrop);
 router.get('/garden/:id', plotsController.getPlotByGardenID);
 router.get('/:id/Rotation', plotsController.getRotation);
 router
