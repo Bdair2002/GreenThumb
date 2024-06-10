@@ -4,10 +4,16 @@ const authController = require('./../controllers/authController');
 const router = express.Router();
 
 router.use(authController.protect);
-router.post('/addGarden', gardenController.addGarden);
-router.get('/', gardenController.getAllGardens);
-router.get('/getMyGardens', gardenController.getMyGardens);
-router.get('/getGarden', gardenController.getGardenByName);
-router.delete('/deleteGarden', gardenController.deleteGarden);
-router.patch('/updateGarden', gardenController.updateMyGarden);
+
+router
+  .route('/')
+  .post(gardenController.addGarden)
+  .get(gardenController.getAllGardens)
+  .patch(gardenController.updateMyGarden);
+router.route('/MyGardens').get(gardenController.getMyGardens);
+router
+  .route('/:Name')
+  .get(gardenController.getGardenByName)
+  .delete(gardenController.deleteGarden);
+
 module.exports = router;

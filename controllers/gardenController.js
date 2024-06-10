@@ -37,13 +37,13 @@ addGarden = catchAsync(async (req, res, next) => {
 getAllGardens = crud.getAll(Garden);
 
 getMyGardens = catchAsync(async (req, res, next) => {
-  const myGarden = await Garden.findOne({
+  const myGarden = await Garden.findAll({
     where: { owner_id: req.user.id },
   });
   res.status(200).send(myGarden);
 });
 getGardenByName = catchAsync(async (req, res, next) => {
-  Name = req.body.Name;
+  Name = req.params.Name;
   const garden = await Garden.findOne({
     where: { Name: Name },
   });
@@ -54,7 +54,6 @@ exports.check = catchAsync(async (req, res, next) => {
   const garden = await Garden.findOne({
     where: { id: req.body.garden_id },
   });
-  console.log('garden id owner' + garden.owner_id);
   if (garden.owner_id === owner_id) {
     return true;
   }
@@ -63,8 +62,8 @@ exports.check = catchAsync(async (req, res, next) => {
 
 deleteGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
-  Name = req.body.Name;
-
+  Name = req.params.Name;
+  console.log(Name);
   const garden = await Garden.findOne({
     where: { Name: Name, owner_id: currentUser },
   });
