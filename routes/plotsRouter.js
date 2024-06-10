@@ -4,11 +4,13 @@ const authController = require('./../controllers/authController');
 const router = express.Router();
 router.use(authController.protect);
 router.get('/', plotsController.getAllPlots);
-router.patch('/updatePlot', plotsController.updatePlot);
-router.patch('/harvest', plotsController.harvestPlot);
-router.patch('/plant', plotsController.plantCrop);
-router.get('/getPlotByGardenID', plotsController.getPlotByGardenID);
-router.get('/getRotation', plotsController.getRotation);
-router.get('/getPlotByID', plotsController.getPlotByID);
-router.delete('/deletePlot', plotsController.deletePlot);
+router.patch('/', plotsController.updatePlot);
+router.patch('/:id/harvest', plotsController.harvestPlot);
+router.patch('/:id/plant/:Type', plotsController.plantCrop);
+router.get('/garden/:id', plotsController.getPlotByGardenID);
+router.get('/:id/Rotation', plotsController.getRotation);
+router
+  .route('/:id')
+  .get(plotsController.getPlotByID)
+  .delete(plotsController.deletePlot);
 module.exports = router;

@@ -19,7 +19,7 @@ function addPlots(garden_id, plotsNumber) {
 getAllPlots = crud.getAll(Plots);
 
 getPlotByGardenID = catchAsync(async (req, res, next) => {
-  const id = req.body.garden_id;
+  const id = req.params.id;
 
   const myPlots = await Plots.findAll({
     where: { garden_id: id },
@@ -27,7 +27,7 @@ getPlotByGardenID = catchAsync(async (req, res, next) => {
   res.status(200).send(myPlots);
 });
 getPlotByID = catchAsync(async (req, res, next) => {
-  const id = req.body.plot_id;
+  const id = req.params.id;
 
   const myPlot = await Plots.findOne({
     where: { plot_id: id },
@@ -62,7 +62,7 @@ updatePlot = catchAsync(async (req, res, next) => {
 });
 
 deletePlot = catchAsync(async (req, res, next) => {
-  plot_id = req.body.plot_id;
+  plot_id = req.params.id;
   console.log('plots id :' + plot_id);
   const plot = await Plots.findOne({
     where: { Plot_ID: plot_id },
@@ -95,7 +95,7 @@ deletePlot = catchAsync(async (req, res, next) => {
 });
 
 getRotation = catchAsync(async (req, res, next) => {
-  plot_id = req.body.plot_id;
+  plot_id = req.params.id;
   const crops = await Crops.findAll({
     where: {
       Plot_ID: plot_id,
@@ -106,7 +106,8 @@ getRotation = catchAsync(async (req, res, next) => {
 });
 
 plantCrop = catchAsync(async (req, res, next) => {
-  const { Crop, plot_id } = req.body;
+  plot_id = req.params.id;
+  const Crop = req.params.Type;
   const available = await Plots.findOne({ where: { Plot_ID: plot_id } });
   if (available.Available) {
     const currentDate = new Date();
@@ -144,7 +145,7 @@ plantCrop = catchAsync(async (req, res, next) => {
 });
 
 harvestPlot = catchAsync(async (req, res, next) => {
-  const { plot_id } = req.body;
+  const plot_id = req.params.id;
   planted = await Plots.findOne({ where: { Plot_ID: plot_id } });
   if (!planted.Available) {
     const currentDate = new Date();
@@ -172,7 +173,7 @@ harvestPlot = catchAsync(async (req, res, next) => {
           where: { Plot_ID: plot_id, Harvested: false },
         },
       );
-      res.status(201).send(updateCrop);
+      res.status(201).send('Harvested  Successfully');
     } else {
       res.status(401).send('You are not authorized to update this plot');
     }
