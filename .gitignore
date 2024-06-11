@@ -1,3 +1,7 @@
 node_modules
 DockerVolume
+<<<<<<< HEAD
 DockerVolume//SqlData
+=======
+DockerVolume//SqlData
+>>>>>>> 00e9ae55f1adf4f9f57945636c68628e6fd08b92
