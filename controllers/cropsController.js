@@ -8,14 +8,7 @@ const Plots = db1.Plots;
 const Gardens = db2.Garden;
 
 addCrops = catchAsync(async (req, res, next) => {
-  const {
-    garden_id,
-    plot_id,
-    type,
-    Expected_Date,
-    Planting_Date,
-    Harvested_Date,
-  } = req.body;
+  const { garden_id, plot_id, type } = req.body;
   const plot = await Plots.findOne({
     where: { Garden_ID: garden_id, Plot_ID: plot_id },
   });
@@ -26,9 +19,6 @@ addCrops = catchAsync(async (req, res, next) => {
         Garden_ID: garden_id,
         Plot_ID: plot_id,
         Type: type,
-        Expected_Date: Expected_Date,
-        Planting_Date: Planting_Date,
-        Harvested_Date: Harvested_Date,
       });
 
       await Plots.update(
@@ -47,7 +37,7 @@ addCrops = catchAsync(async (req, res, next) => {
 getAllCrops = crud.getAll(Crops);
 
 deleteCrop = catchAsync(async (req, res, next) => {
-  id = req.body.crop_id;
+  id = req.params.id;
   const crop = await Crops.findOne({ where: { Crop_ID: id } });
   const plot = await Plots.findOne({
     where: { Garden_ID: crop.Garden_ID, Plot_ID: crop.Plot_ID },
@@ -78,24 +68,13 @@ const updateCrop = catchAsync(async (req, res, next) => {
   const garden = await Gardens.findOne({ where: { id: plot.Garden_ID } });
 
   if (req.user.id === garden.owner_id) {
-    const {
-      crop_id,
-      garden_id,
-      plot_id,
-      type,
-      Expected_Date,
-      Planting_Date,
-      Harvested_Date,
-    } = req.body;
+    const { crop_id, garden_id, plot_id, type } = req.body;
     const update = await Crops.update(
       {
         Crop_ID: crop_id,
         Garden_ID: garden_id,
         Plot_ID: plot_id,
         Type: type,
-        Expected_Date: Expected_Date,
-        Planting_Date: Planting_Date,
-        Harvested_Date: Harvested_Date,
       },
       { where: { Crop_ID: crop_id } },
     );
@@ -107,7 +86,7 @@ const updateCrop = catchAsync(async (req, res, next) => {
 });
 
 getByGardenID = catchAsync(async (req, res, next) => {
-  garden_id = req.body.garden_id;
+  garden_id = req.params.id;
   const crop = await Crops.findAll({
     where: { garden_id: garden_id },
   });
@@ -121,6 +100,7 @@ getByPlotID = catchAsync(async (req, res, next) => {
   });
   res.status(200).send(crop);
 });
+
 module.exports = {
   getAllCrops,
   addCrops,

@@ -3,10 +3,11 @@ const cropsController = require('./../controllers/cropsController');
 const authController = require('./../controllers/authController');
 const router = express.Router();
 router.use(authController.protect);
-router.post('/addCrop', cropsController.addCrops);
-router.delete('/deleteCrop', cropsController.deleteCrop);
-router.patch('/updateCrop', cropsController.updateCrop);
+
+router.post('/', cropsController.addCrops);
+router.delete('/:id', cropsController.deleteCrop);
+router.patch('/', cropsController.updateCrop);
 router.get('/', cropsController.getAllCrops);
-router.get('/getByGardenID', cropsController.getByGardenID);
-router.get('/getByPlotID', cropsController.getByPlotID);
+router.get('/garden/:id', cropsController.getByGardenID);
+router.get('/plot/:id', cropsController.getByPlotID); // not that u need to change this u need to put the crops in garden url
 module.exports = router;

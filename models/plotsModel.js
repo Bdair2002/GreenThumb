@@ -21,5 +21,17 @@ const Plots = sequelize.define('Plots', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  Expected_Date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  Planting_Date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  Harvested_Date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
 });
 module.exports = { Plots };

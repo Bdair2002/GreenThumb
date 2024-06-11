@@ -8,7 +8,8 @@ const eventsRouter = require('./routes/eventsRouter');
 const resourcesRouter = require('./routes/resourcesRouter');
 const articlesRouter = require('./routes/articlesRouter');
 const associations = require('./db_associations/associations');
-const weatherRouter = require('./routes/externalapiRouter');
+const weatherRouter = require('./routes/externalApiWeatherRouter'); 
+const soilRouter = require('./routes/externalApiSoilRouter'); 
 const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRouter');
 const partnershipRouter = require('./routes/partnershipRouter');
@@ -39,6 +40,9 @@ app.use('/GreenThumb/v1/crops', cropsRouter);
 app.use('/GreenThumb/v1/gardens', gardenRouter);
 app.use('/GreenThumb/v1/plots', plotsRouter);
 app.use('/GreenThumb/v1/events', eventsRouter);
+app.use('/GreenThumb/v1/externalapi/weather', weatherRouter);
+app.use('/GreenThumb/v1/externalapi/soil', soilRouter);
+
 app.use('/GreenThumb/v1/partnerships', partnershipRouter);
 
 app.use('/GreenThumb/v1/resources', resourcesRouter);
