@@ -1,0 +1,36 @@
+extends base
+
+block content
+  main.main
+    .card-container
+        if (gardens)
+            each garden in gardens
+               .card
+                    .card__header
+                         h1= garden.Name
+                    .card__details 
+                         .owner     
+                            h3 Owner
+                            p=` ${garden.User.username}`
+                         .location 
+                            h4= `Located in `
+                            p=`${garden.Location}`
+                         .plots
+                            p= `${garden.PlotsNumber}`
+                            p Plots
+                         a#view(href=`/gardens/${garden.id}`) View On Map >            
+                         .growing_conditions 
+                            .condition_item
+                                p Sunlight
+                                .condition_item_choice
+                                    p= garden.Sunlight
+                            .condition_item
+                                p Soil Type
+                                .condition_item_choice
+                                    p= garden.SoilType
+                            .condition_item
+                                p Water Source
+                                .condition_item_choice
+                                    p= garden.WaterSource
+        else 
+            h1 No Gardens To show

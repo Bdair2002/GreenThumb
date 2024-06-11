@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const AppError = require('./utils/appError');
 const userRouter = require('./routes/userRouter');
 const gardenRouter = require('./routes/gardenRouter');
@@ -10,12 +11,30 @@ const associations = require('./db_associations/associations');
 const weatherRouter = require('./routes/externalApiWeatherRouter'); 
 const soilRouter = require('./routes/externalApiSoilRouter'); 
 const globalErrorHandler = require('./controllers/errorController');
+const viewRouter = require('./routes/viewRouter');
 const partnershipRouter = require('./routes/partnershipRouter');
+const rateLimit = require('express-rate-limit');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 
 const cropsRouter = require('./routes/cropsRouter');
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+app.use(cookieParser());
 app.use(express.json({ limit: '10kb' }));
 
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try again in an hour!',
+});
+app.use('/', viewRouter);
+app.use('/GreenThumb', limiter);
 app.use('/GreenThumb/v1/users', userRouter);
 app.use('/GreenThumb/v1/crops', cropsRouter);
 app.use('/GreenThumb/v1/gardens', gardenRouter);
@@ -35,4 +54,4 @@ app.all('*', (req, res, next) => {
 });
 
 app.use(globalErrorHandler);
-module.exports = app; 
+module.exports = app;
