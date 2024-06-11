@@ -12,13 +12,25 @@ const Plots = sequelize.define('Plots', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  Availabe: {
+  Available: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
     allowNull: false,
   },
   Crop: {
     type: DataTypes.STRING,
+    allowNull: true,
+  },
+  Expected_Date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  Planting_Date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  Harvested_Date: {
+    type: DataTypes.DATE,
     allowNull: true,
   },
 });

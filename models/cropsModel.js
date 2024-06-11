@@ -14,23 +14,27 @@ const Crops = sequelize.define('Crops', {
   },
   Garden_ID: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
+    references: {
+      model: Garden,
+      key: 'id',
+    },
   },
   Plot_ID: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   Type: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  Expected_Date: {
-    type: DataTypes.DATE,
+  Harvested: {
+    type: DataTypes.BOOLEAN,
     allowNull: true,
   },
   Planting_Date: {
     type: DataTypes.DATE,
-    allowNull: false,
+    allowNull: true,
   },
   Harvested_Date: {
     type: DataTypes.DATE,
