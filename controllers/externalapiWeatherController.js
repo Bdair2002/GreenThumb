@@ -55,7 +55,7 @@ exports.weathercity = async (req, res) => {
 
 
 
-const usdaPestApiUrl = 'https://plantsdb.xyz/v1/plants/search&output=json'; // Example endpoint
+const usdaPestApiUrl = 'https://plantsdb.xyz/v1/plants/search&output=json'; 
 
 exports.ClimateData = async (req, res) => {
    
