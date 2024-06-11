@@ -89,11 +89,11 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
   }
   if (!token) {
+    console.log('TSET');
     return next(
       new AppError('You are not logged in! Please log in to get access.', 401),
     );
   }
-
   const decryptedToken = await promisify(jwt.verify)(
     token,
     process.env.JWT_SECRET,

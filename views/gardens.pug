@@ -9,25 +9,28 @@ block content
                     .card__header
                          h1= garden.Name
                     .card__details 
-                         h2= `Owner: ${garden.User.username}`
-                         h4= `Located in ${garden.Location} `   
-                         p= `${garden.PlotsNumber} Plots`
+                         .owner     
+                            h3 Owner
+                            p=` ${garden.User.username}`
+                         .location 
+                            h4= `Located in `
+                            p=`${garden.Location}`
+                         .plots
+                            p= `${garden.PlotsNumber}`
+                            p Plots
+                         a#view(href=`/gardens/${garden.id}`) View On Map >            
                          .growing_conditions 
                             .condition_item
                                 p Sunlight
+                                .condition_item_choice
+                                    p= garden.Sunlight
                             .condition_item
                                 p Soil Type
+                                .condition_item_choice
+                                    p= garden.SoilType
                             .condition_item
                                 p Water Source
-                            .condition_item_choice
-                                p= garden.Sunlight
-                            .condition_item_choice
-                                p= garden.SoilType
-                            .condition_item_choice
-                                p= garden.WaterSource
-                         a#view(href=`/gardens/${garden.id}`) View On Map            
-                      
-
-         
+                                .condition_item_choice
+                                    p= garden.WaterSource
         else 
-            h1 TEST   
+            h1 No Gardens To show

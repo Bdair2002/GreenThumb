@@ -7,7 +7,10 @@ block append head
 
 
 block content
-    h1=garden.Name
+  .map_container 
+    .nav  
+      h1.map_title=garden.Name
+      a#Back(href=`/gardens/`) Back >            
     section.section-map
       #map
     script.
