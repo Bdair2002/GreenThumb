@@ -126,6 +126,26 @@ Follow these steps to set up the project on your local machine:
 3. **Set up the database**
 
     There are two ways of running the database, you can either install MySQL server, or install docker and let it handle everything for you. but first you will have to configure it [here](#Docker-Setup).
+    If you use MySQL, then create a database and name it **green_thumb**, then Sequelizer will handle all the required connections.
+
+4. **Set up .env**
+
+Create a `.env` file in the root directory of the project. Add the following environment variables to it:
+
+- **MYSQL_ROOT_PASSWORD**: Password for the MySQL root user.
+- **PORT**: Port number for your application (e.g., 3000).
+- **JWT_SECRET**: Secret key for JWT (JSON Web Token) encryption.
+- **JWT_EXPIRES_IN**: Expiration time for JWT tokens.
+- **JWT_COOKIE_EXPIRES_IN_DAYS**: Expiration time for JWT cookies.
+- **EMAIL_USERNAME**: Username for the email service.
+- **EMAIL_PASSWORD**: Password for the email service.
+- **EMAIL_HOST**: SMTP host for sending emails.
+- **EMAIL_PORT**: SMTP port number.
+
+These environment variables are used throughout the application to configure various settings. Ensure the `.env` file is not committed to version control for security reasons. You can use tools like `dotenv` to load these variables into your Node.js application during development.
+
+
+
 4. **Run the application**
 
     ```bash
@@ -145,8 +165,10 @@ If you prefer to use Docker, follow these steps:
 
 1. **Build the Docker image**
 
+    
     ```bash
-    docker build -t your-image-name .
+    cd database
+    docker build -t mysql_db .
     ```
 
 2. **Run the Docker container**
@@ -184,5 +206,3 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 ]
-
-
