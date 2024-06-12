@@ -1,5 +1,5 @@
 const db = require('./../models/userModel');
-const crud = require('./crudController');
+const factory = require('./factoryController');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 
@@ -57,7 +57,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     message: 'Deleted',
   });
 });
-exports.getUser = crud.getOne(User);
-exports.getAllUsers = crud.getAll(User);
-exports.updateUser = crud.updateOne(User);
-exports.deleteUser = crud.deleteOne(User);
+exports.getUser = factory.getOne(User);
+exports.getAllUsers = factory.getAll(User);
+exports.updateUser = factory.updateOne(User);
+exports.deleteUser = factory.deleteOne(User);

@@ -2,7 +2,7 @@ const db = require('./../models/plotsModel');
 const catchAsync = require('../utils/catchAsync');
 const db1 = require('./../models/gardenModel');
 const db2 = require('./../models/cropsModel');
-const crud = require('./crudController');
+const factory = require('./factoryController');
 const gardenController = require('./gardenController');
 const Crops = db2.Crops;
 const Plots = db.Plots;
@@ -16,7 +16,7 @@ function addPlots(garden_id, plotsNumber) {
   }
 }
 
-getAllPlots = crud.getAll(Plots);
+getAllPlots = factory.getAll(Plots);
 
 getPlotByGardenID = catchAsync(async (req, res, next) => {
   const id = req.params.id;

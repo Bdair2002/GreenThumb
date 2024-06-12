@@ -1,11 +1,11 @@
 const db = require('./../models/partnershipModel');
-const crud = require('./crudController');
+const factory = require('./factoryController');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const Partnership = db.Partnership;
 
-exports.getAllPartnerships = crud.getAll(Partnership);
-exports.setPartnership = crud.createOne(Partnership);
-exports.getPartnership = crud.getOne(Partnership);
-exports.updatePartnership = crud.updateOne(Partnership);
-exports.deletePartnership = crud.deleteOne(Partnership);
+exports.getAllPartnerships = factory.getAll(Partnership);
+exports.setPartnership = factory.createOne(Partnership);
+exports.getPartnership = factory.getOne(Partnership);
+exports.updatePartnership = factory.updateOne(Partnership);
+exports.deletePartnership = factory.deleteOne(Partnership);
