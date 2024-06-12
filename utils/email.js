@@ -5,13 +5,13 @@ const sendEmail = async (options) => {
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-      user: 'dagmar.conn61@ethereal.email',
-      pass: 'z74fErA5xPRsz2bmxr',
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
     },
   });
 
   const mailOptions = {
-    from: 'Mohammad Bdair <s12027880@stu.najah.edu>',
+    from: 'GreenThumb Inc. <GreenThumb@co.com>',
     to: options.email,
     subject: options.subject,
     text: options.message,

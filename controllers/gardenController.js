@@ -3,7 +3,7 @@ const db1 = require('./../models/plotsModel');
 const db2 = require('./../models/cropsModel');
 const plots = require('./plotsController');
 const catchAsync = require('../utils/catchAsync');
-const crud = require('./crudController');
+const factory = require('./factoryController');
 const Garden = db.Garden;
 const Crops = db2.Crops;
 const Plots = db1.Plots;
@@ -34,7 +34,7 @@ addGarden = catchAsync(async (req, res, next) => {
   res.status(200).send(newGarden);
 });
 
-getAllGardens = crud.getAll(Garden);
+getAllGardens = factory.getAll(Garden);
 
 getMyGardens = catchAsync(async (req, res, next) => {
   const myGarden = await Garden.findAll({

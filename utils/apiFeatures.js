@@ -1,28 +1,43 @@
-const { Op } = require('sequelize');
+const { Sequelize, Op, where } = require('sequelize');
 class APIFeatures {
   constructor(model, queryString) {
     this.model = model;
     this.queryString = queryString;
   }
+
   filter() {
+    const operatorMap = {
+      gte: Op.gte,
+      gt: Op.gt,
+      lte: Op.lte,
+      lt: Op.lt,
+    };
     const queryObj = { ...this.queryString };
     const excludedFields = ['page', 'sort', 'limit'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
     let queryStr = JSON.stringify(queryObj);
 
-    queryStr = queryStr.replace(
-      /\b(gte|gt|lte|lt)\b/g,
-      (match) => `[Op.${match}]`,
-    );
-
-    const attributes = JSON.parse(queryStr);
-
     const whereClause = {};
-    let sortBy = {};
+    const attributes = JSON.parse(queryStr);
     for (const key in attributes) {
-      whereClause[key] = attributes[key];
+      const value = attributes[key];
+      if (typeof value === 'object' && value !== null) {
+        const newKey = {};
+        for (const op in value) {
+          if (operatorMap[op]) {
+            newKey[operatorMap[op]] = value[op];
+          } else {
+            newKey[op] = value[op];
+          }
+        }
+        whereClause[key] = newKey;
+      } else {
+        whereClause[key] = value;
+      }
     }
+
+    let sortBy = {};
     if (this.queryString.sort) {
       sortBy = this.queryString.sort.split(',').map((field) => {
         if (field.startsWith('-')) {
@@ -43,7 +58,6 @@ class APIFeatures {
         limit: limit,
       });
     } else {
-      console.log('out');
       this.query = this.model.findAll({
         where: whereClause,
         order: sortBy,

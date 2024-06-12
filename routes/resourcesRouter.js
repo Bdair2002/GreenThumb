@@ -1,13 +1,19 @@
 const express = require('express');
 const resourcesController = require('./../controllers/resourcesController');
+const authController = require('../controllers/authController');
 const router = express.Router();
-router.post('/addResource', resourcesController.addResource);
-router.patch('/updateResource', resourcesController.updateResource);
-router.put('/updateResourceDescription', resourcesController.updateResourceDescription);
-router.put('/updateResourceSold', resourcesController.updateResourceSold);
-router.put('/updateResourceTools', resourcesController.updateResourceTools);
-router.delete('/deleteResource', resourcesController.deleteResource);
-router.get('/getResources', resourcesController.findAllResource);
-router.get('/getResourcesTool', resourcesController.findResourceTool);
-router.get('/getResourcesOwner', resourcesController.findResourceOwner);
+router.use(authController.protect);
+router.get('/', resourcesController.findAllResource);
+router.post('/', resourcesController.setOwner, resourcesController.addResource);
+router.use(authController.restrictTo('user', 'admin'));
+router.patch(
+  '/:id',
+  resourcesController.checkOwner,
+  resourcesController.updateResource,
+);
+router.delete(
+  '/:id',
+  resourcesController.checkOwner,
+  resourcesController.deleteResource,
+);
 module.exports = router;

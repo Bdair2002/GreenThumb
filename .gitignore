@@ -1,3 +1,4 @@
 node_modules
 DockerVolume
-DockerVolume\SqlData
+DockerVolume//SqlData
+bundle.js
