@@ -9,9 +9,19 @@ router.post(
   ArticlesController.addArticle,
 );
 router.get('/', ArticlesController.findAllArticle);
-router.patch('/:id', ArticlesController.updateArticle);
-router.delete('/:id', ArticlesController.deleteArticle);
+
 router.get('/:id', ArticlesController.findArticle);
 router.get('/publisher/:Publisher_ID', ArticlesController.findByPublisher);
+router.use(authController.restrictTo('user', 'admin'));
+router.patch(
+  '/:id',
+  ArticlesController.checkOwner,
+  ArticlesController.updateArticle,
+);
+router.delete(
+  '/:id',
+  ArticlesController.checkOwner,
+  ArticlesController.deleteArticle,
+);
 
 module.exports = router;

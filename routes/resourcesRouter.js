@@ -5,6 +5,15 @@ const router = express.Router();
 router.use(authController.protect);
 router.get('/', resourcesController.findAllResource);
 router.post('/', resourcesController.setOwner, resourcesController.addResource);
-router.patch('/:id', resourcesController.updateResource);
-router.delete('/:id', resourcesController.deleteResource);
+router.use(authController.restrictTo('user', 'admin'));
+router.patch(
+  '/:id',
+  resourcesController.checkOwner,
+  resourcesController.updateResource,
+);
+router.delete(
+  '/:id',
+  resourcesController.checkOwner,
+  resourcesController.deleteResource,
+);
 module.exports = router;
