@@ -23,15 +23,10 @@ Empowering Urban Gardening and Sustainable Living
 
 - **Size:** ![Size](https://img.shields.io/github/repo-size/Bdair2002/GreenThumb) &nbsp; :file_folder:
 - **Files:** ![Files](https://img.shields.io/github/directory-file-count/Bdair2002/GreenThumb) &nbsp; :open_file_folder:
-- **NPM Version:** ![NPM Version](https://img.shields.io/npm/v/package-name) &nbsp; :package:
 - **Last Commit:** ![Last Commit](https://img.shields.io/github/last-commit/Bdair2002/GreenThumb/main) &nbsp; :date:
 - **Contributors:** ![Contributors](https://img.shields.io/github/contributors/Bdair2002/GreenThumb) &nbsp; :busts_in_silhouette:
 
 ### Note
-
-- Replace `your-username/your-repository` with your actual GitHub username and repository name.
-- Replace `branch-name` with the branch name for the last commit badge.
-- Replace `package-name` with the name of your npm package for the NPM version badge.
 
 These badges provide real-time information about your GitHub repository's status, making it easier for users and collaborators to quickly assess key metrics.
 
