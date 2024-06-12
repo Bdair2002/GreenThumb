@@ -1,6 +1,6 @@
-const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
-const APIFeatures = require('./../utils/apiFeatures');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
+const APIFeatures = require('../utils/apiFeatures');
 
 exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
@@ -23,7 +23,7 @@ exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.update(req.body, {
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
 

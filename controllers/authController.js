@@ -89,7 +89,6 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
   }
   if (!token) {
-    console.log('TSET');
     return next(
       new AppError('You are not logged in! Please log in to get access.', 401),
     );
@@ -226,6 +225,8 @@ exports.isLoggedIn = async (req, res, next) => {
     } catch (err) {
       return next();
     }
+    next();
+  } else {
+    return next(new AppError('You are not logged in, please log in', 401));
   }
-  next();
 };

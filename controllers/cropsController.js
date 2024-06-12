@@ -2,7 +2,7 @@ const db = require('./../models/cropsModel');
 const db1 = require('./../models/plotsModel');
 const db2 = require('./../models/gardenModel');
 const catchAsync = require('../utils/catchAsync');
-const crud = require('./crudController');
+const factory = require('./factoryController');
 const Crops = db.Crops;
 const Plots = db1.Plots;
 const Gardens = db2.Garden;
@@ -34,7 +34,7 @@ addCrops = catchAsync(async (req, res, next) => {
   }
 });
 
-getAllCrops = crud.getAll(Crops);
+getAllCrops = factory.getAll(Crops);
 
 deleteCrop = catchAsync(async (req, res, next) => {
   id = req.params.id;

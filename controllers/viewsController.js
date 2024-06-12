@@ -28,7 +28,6 @@ exports.getGardens = catchAsync(async (req, res, next) => {
       attributes: ['username'],
     },
   });
-  console.log(gardens);
   res.status(200).render('gardens', {
     title: 'My Gardens',
     gardens,

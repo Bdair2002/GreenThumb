@@ -2,28 +2,28 @@ extends base
 
 block content
   main.main
-    img(src='/img/logo-img.png' alt='GreenThumb logo2').logo
-    .login-form
-      h2.login_text Sign up
-      form.form.form--signup
-        .form__group
-          label.form__label(for='username') Username
-          input#username.form__input(type='text', placeholder='username', required)
-        .form__group
-          label.form__label(for='firstname') First Name
-          input#firstname.form__input(type='text', placeholder='John', required)
-        .form__group
-          label.form__label(for='lastname') Last Name
-          input#lastname.form__input(type='text', placeholder='Doe', required)    
-        .form__group
-          label.form__label(for='email') Email address
-          input#email.form__input(type='email', placeholder='your_email@example.com', required)
-        .form__group
-          label.form__label(for='password') Password
-          input#password.form__input(type='password', placeholder='••••••••', required)
-        .form__group
-          label.form__label(for='password') Password Confirm
-          input#passwordconfirm.form__input(type='password', placeholder='••••••••', required)  
-        .form__group
-          button#signup_primary Sign up
-      button#btn_cancel Cancel
+    .signup-form 
+        img(src='/img/logo-img.png' alt='GreenThumb logo2').logo
+        h2.login_text Sign up
+        form.form.form--signup
+          .form__group
+            label.form__label(for='username') Username
+            input#username.form__input(type='text', placeholder='username', required)
+          .form__group
+            label.form__label(for='firstname') First Name
+            input#firstname.form__input(type='text', placeholder='John', required)
+          .form__group
+            label.form__label(for='lastname') Last Name
+            input#lastname.form__input(type='text', placeholder='Doe', required)    
+          .form__group
+            label.form__label(for='email') Email address
+            input#email.form__input(type='email', placeholder='your_email@example.com', required)
+          .form__group
+            label.form__label(for='password') Password
+            input#password.form__input(type='password', placeholder='••••••••', required)
+          .form__group
+            label.form__label(for='password') Password Confirm
+            input#passwordconfirm.form__input(type='password', placeholder='••••••••', required)  
+          .form__group
+            button#signup_primary Sign up
+          button#btn_cancel Cancel
