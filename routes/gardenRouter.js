@@ -4,12 +4,12 @@ const authController = require('./../controllers/authController');
 const router = express.Router();
 
 router.use(authController.protect);
-
+router.patch('/:Name', gardenController.updateMyGarden);
 router
   .route('/')
   .post(gardenController.addGarden)
-  .get(gardenController.getAllGardens)
-  .patch(gardenController.updateMyGarden);
+  .get(gardenController.getAllGardens);
+
 router.route('/MyGardens').get(gardenController.getMyGardens);
 router
   .route('/:Name')
