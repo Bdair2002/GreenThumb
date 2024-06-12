@@ -26,10 +26,6 @@ Empowering Urban Gardening and Sustainable Living
 - **Last Commit:** ![Last Commit](https://img.shields.io/github/last-commit/Bdair2002/GreenThumb/main) &nbsp; :date:
 - **Contributors:** ![Contributors](https://img.shields.io/github/contributors/Bdair2002/GreenThumb) &nbsp; :busts_in_silhouette:
 
-### Note
-
-These badges provide real-time information about your GitHub repository's status, making it easier for users and collaborators to quickly assess key metrics.
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -157,7 +153,7 @@ Follow these steps to set up the project on your local machine:
 4. **Run the application**
 
     ```bash
-    npm startbu
+    npm start
     ```
 
 ## Additional Scripts
