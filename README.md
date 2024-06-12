@@ -21,13 +21,11 @@ Empowering Urban Gardening and Sustainable Living
 
 ## GitHub Repository Information :small_blue_diamond:
 
-- **Size:** ![Size](https://img.shields.io/github/repo-size/your-username/your-repository) &nbsp; :file_folder:
-- **Files:** ![Files](https://img.shields.io/github/directory-file-count/your-username/your-repository) &nbsp; :open_file_folder:
+- **Size:** ![Size](https://img.shields.io/github/repo-size/Bdair2002/GreenThumb) &nbsp; :file_folder:
+- **Files:** ![Files](https://img.shields.io/github/directory-file-count/Bdair2002/GreenThumb) &nbsp; :open_file_folder:
 - **NPM Version:** ![NPM Version](https://img.shields.io/npm/v/package-name) &nbsp; :package:
-- **Last Commit:** ![Last Commit](https://img.shields.io/github/last-commit/your-username/your-repository/branch-name) &nbsp; :date:
-- **Open Issues:** ![Open Issues](https://img.shields.io/github/issues/your-username/your-repository) &nbsp; :warning:
-- **Contributors:** ![Contributors](https://img.shields.io/github/contributors/your-username/your-repository) &nbsp; :busts_in_silhouette:
-- **All Releases:** ![All Releases](https://img.shields.io/github/downloads/your-username/your-repository/total) &nbsp; :inbox_tray:
+- **Last Commit:** ![Last Commit](https://img.shields.io/github/last-commit/Bdair2002/GreenThumb/main) &nbsp; :date:
+- **Contributors:** ![Contributors](https://img.shields.io/github/contributors/Bdair2002/GreenThumb) &nbsp; :busts_in_silhouette:
 
 ### Note
 
