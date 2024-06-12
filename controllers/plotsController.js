@@ -35,14 +35,9 @@ getPlotByID = catchAsync(async (req, res, next) => {
   res.status(200).send(myPlot);
 });
 updatePlot = catchAsync(async (req, res, next) => {
-  const {
-    garden_id,
-    plot_id,
-    Crop,
-    Expected_Date,
-    Planting_Date,
-    Harvested_Date,
-  } = req.body;
+  plot_id = req.params.id;
+  const { garden_id, Crop, Expected_Date, Planting_Date, Harvested_Date } =
+    req.body;
   if (gardenController.check) {
     const updatePlot = await Plots.update(
       {
@@ -107,7 +102,7 @@ getRotation = catchAsync(async (req, res, next) => {
 
 plantCrop = catchAsync(async (req, res, next) => {
   plot_id = req.params.id;
-  const Crop = req.body.Type;
+  const Crop = req.params.Type;
   const available = await Plots.findOne({ where: { Plot_ID: plot_id } });
   if (available.Available) {
     const currentDate = new Date();
