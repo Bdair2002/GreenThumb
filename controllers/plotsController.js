@@ -36,13 +36,12 @@ getPlotByID = catchAsync(async (req, res, next) => {
 });
 updatePlot = catchAsync(async (req, res, next) => {
   plot_id = req.params.id;
-  const { garden_id, Crop, Expected_Date, Planting_Date, Harvested_Date } =
-    req.body;
+  const { garden_id, Crop, Planting_Date, Harvested_Date } = req.body;
   if (gardenController.check) {
     const updatePlot = await Plots.update(
       {
         Crop: Crop,
-        Expected_Date: Expected_Date,
+
         Planting_Date: Planting_Date,
         Harvested_Date: Harvested_Date,
       },

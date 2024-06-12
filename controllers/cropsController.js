@@ -60,7 +60,7 @@ deleteCrop = catchAsync(async (req, res, next) => {
 });
 
 const updateCrop = catchAsync(async (req, res, next) => {
-  id = req.body.crop_id;
+  id = req.params.id;
   const crop = await Crops.findOne({ where: { Crop_ID: id } });
   const plot = await Plots.findOne({
     where: { Garden_ID: crop.Garden_ID, Plot_ID: crop.Plot_ID },
