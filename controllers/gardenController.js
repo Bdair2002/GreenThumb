@@ -82,7 +82,7 @@ deleteGarden = catchAsync(async (req, res, next) => {
 });
 updateMyGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
-  Name = req.body.Name;
+  Name = req.params.Name;
   const {
     NewName,
     Location,
