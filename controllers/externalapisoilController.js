@@ -30,24 +30,35 @@ exports.soillatlon = async (req, res) => {
 };
 
 
-const APIKEY = '863qbwD4rjfU329Ej1wT0cry35gAAKLCRtfoNg6swhg'; 
+
+
+
+const https = require('https');
+
+const APIKEY =  'FOABAIjSOsK2vNsl6OVYL93h826nLyaPSm_ey57BonM'; 
 
 exports.allplants = async (req, res) => {
     const { plantName } = req.body; 
-  
+
     try {
-      const response = await axios.get('https://trefle.io/api/v1/plants/search', {
-        params: {
-          q: plantName,
-          token: APIKEY
-        }
-      });
-  
-      return res.status(200).json(response.data);
+        const response = await axios.get('https://trefle.io/api/v1/plants/search', {
+            params: {
+                q: plantName,
+                token: APIKEY
+            },
+            httpsAgent: new https.Agent({  
+                rejectUnauthorized: false
+            })
+        });
+
+        return res.status(200).json(response.data);
     } catch (error) {
-      console.error('Error searching for plant:', error);
-  
-      
-      return res.status(500).json({ error: 'Failed to search for plant' });
+        console.error('Error searching for plant:', error);
+        return res.status(500).json({ error: 'Failed to search for plant' });
     }
-  };
+};
+
+
+
+
+
