@@ -86,6 +86,24 @@ Empowering Urban Gardening and Sustainable Living
 6. **Local Partnership Integration**
    - Connects with local nurseries, farms, and organizations.
    - Promotes products, services, and events relevant to urban gardening.
+  
+## Extra Features :star: 
+ 1. **User Privacy and Data Security**
+    - Passwords are encrypted before getting saved in the database.
+    - Unique usernames and emails per user.
+    - Only admin and authorized user can udpate or delete a resource.
+      
+ 2. **JSON Web Token (JWT) Support**
+    - Our project comes with built-in support for JSON Web Tokens (JWT), providing a secure and efficient way to manage authentication and authorization.
+
+ 3. **Roles**
+    - Our system has  few roles, which are: user, admin and partner
+
+ 4. **Error Handling and Logging**
+    - We used Morgan library to log our API requests to debug and troubleshoto bugs.
+    - Sequelize comes with a built in logger to log SQL queries.
+    - Global Util error handler
+
 ### Built With :hammer_and_wrench:
 
 [![Node.js][Node.js]][Nodejs-url]
