@@ -36,20 +36,38 @@ getPlotByID = catchAsync(async (req, res, next) => {
 });
 updatePlot = catchAsync(async (req, res, next) => {
   plot_id = req.params.id;
-  const { garden_id, Crop, Planting_Date, Harvested_Date } = req.body;
-  if (gardenController.check) {
-    const updatePlot = await Plots.update(
-      {
-        Crop: Crop,
 
+  const { Crop, Planting_Date } = req.body;
+  if (gardenController.check) {
+    updateCrop1 = await Crops.update(
+      {
+        Type: Crop,
         Planting_Date: Planting_Date,
-        Harvested_Date: Harvested_Date,
+        Harvested: false,
       },
       {
-        where: { Garden_ID: garden_id, Plot_ID: plot_id },
+        where: { Plot_ID: plot_id, Harvested_Date: null },
       },
     );
-    res.status(201).send(updatePlot);
+
+    if (updateCrop1[0] > 0) {
+      const updatePlot = await Plots.update(
+        {
+          Crop: Crop,
+          Planting_Date: Planting_Date,
+          Available: false,
+        },
+        {
+          where: { Plot_ID: plot_id },
+        },
+      );
+
+      res.status(200).send(updateCrop1);
+    } else {
+      res
+        .status(401)
+        .send('You Cannot Update The Type of Crop without Planting it!');
+    }
   } else {
     res.status(401).send('You are not authorized to update this plot');
   }
@@ -57,7 +75,6 @@ updatePlot = catchAsync(async (req, res, next) => {
 
 deletePlot = catchAsync(async (req, res, next) => {
   plot_id = req.params.id;
-  console.log('plots id :' + plot_id);
   const plot = await Plots.findOne({
     where: { Plot_ID: plot_id },
   });
@@ -89,14 +106,20 @@ deletePlot = catchAsync(async (req, res, next) => {
 });
 
 getRotation = catchAsync(async (req, res, next) => {
-  plot_id = req.params.id;
-  const crops = await Crops.findAll({
-    where: {
-      Plot_ID: plot_id,
-    },
-    order: [['Planting_Date', 'ASC']],
-  });
-  res.status(200).send(crops);
+  if (gardenController.check) {
+    plot_id = req.params.id;
+    const crops = await Crops.findAll({
+      where: {
+        Plot_ID: plot_id,
+      },
+      order: [['Planting_Date', 'ASC']],
+    });
+    res.status(200).send(crops);
+  } else {
+    res
+      .status(401)
+      .send('You are not authorized to get the rotation for this plot');
+  }
 });
 
 plantCrop = catchAsync(async (req, res, next) => {
@@ -169,7 +192,7 @@ harvestPlot = catchAsync(async (req, res, next) => {
       );
       res.status(201).send('Harvested  Successfully');
     } else {
-      res.status(401).send('You are not authorized to update this plot');
+      res.status(401).send('You are not authorized to harvest this plot');
     }
   } else {
     res.status(401).send('Not Planted');

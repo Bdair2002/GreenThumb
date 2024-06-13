@@ -13,6 +13,7 @@ catchAsync(async (req, res, next) => {
 const db = {};
 db.sequelize = sequelize;
 db.sequelize.sync({ force: false, alter: true }).then(() => {
+  //if we change this flag to true it will reset the database
   console.log('Synced');
 });
 module.exports = db;

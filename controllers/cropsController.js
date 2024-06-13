@@ -68,15 +68,16 @@ const updateCrop = catchAsync(async (req, res, next) => {
   const garden = await Gardens.findOne({ where: { id: plot.Garden_ID } });
 
   if (req.user.id === garden.owner_id) {
-    const { crop_id, garden_id, plot_id, type } = req.body;
+    const { garden_id, plot_id, type, harvest_date, planting_date } = req.body;
     const update = await Crops.update(
       {
-        Crop_ID: crop_id,
         Garden_ID: garden_id,
         Plot_ID: plot_id,
         Type: type,
+        Harvested_Date: harvest_date,
+        Planting_Date: planting_date,
       },
-      { where: { Crop_ID: crop_id } },
+      { where: { Crop_ID: id } },
     );
 
     res.status(200).send({ status: 'success' });
@@ -94,7 +95,7 @@ getByGardenID = catchAsync(async (req, res, next) => {
 });
 
 getByPlotID = catchAsync(async (req, res, next) => {
-  plot_id = req.body.plot_id;
+  plot_id = req.params.id;
   const crop = await Crops.findAll({
     where: { plot_id: plot_id },
   });
