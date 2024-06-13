@@ -2,6 +2,7 @@ const express = require('express');
 const ArticlesController = require('./../controllers/articlesController');
 const router = express.Router();
 const authController = require('./../controllers/authController');
+const middleware = require('../middleware/validateArticlePublisher');
 router.use(authController.protect);
 router.post(
   '/',
@@ -15,12 +16,12 @@ router.get('/publisher/:Publisher_ID', ArticlesController.findByPublisher);
 router.use(authController.restrictTo('user', 'admin'));
 router.patch(
   '/:id',
-  ArticlesController.checkOwner,
+  middleware.checkArticleOwner,
   ArticlesController.updateArticle,
 );
 router.delete(
   '/:id',
-  ArticlesController.checkOwner,
+  middleware.checkArticleOwner,
   ArticlesController.deleteArticle,
 );
 

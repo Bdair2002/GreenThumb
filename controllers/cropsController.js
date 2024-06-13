@@ -7,33 +7,6 @@ const Crops = db.Crops;
 const Plots = db1.Plots;
 const Gardens = db2.Garden;
 
-addCrops = catchAsync(async (req, res, next) => {
-  const { garden_id, plot_id, type } = req.body;
-  const plot = await Plots.findOne({
-    where: { Garden_ID: garden_id, Plot_ID: plot_id },
-  });
-  const garden = await Gardens.findOne({ where: { id: plot.Garden_ID } });
-  if (req.user.id === garden.owner_id) {
-    if (plot.Available) {
-      newCrop = await Crops.create({
-        Garden_ID: garden_id,
-        Plot_ID: plot_id,
-        Type: type,
-      });
-
-      await Plots.update(
-        { Crop: type, Available: 0 },
-        { where: { Garden_ID: garden_id, Plot_ID: plot_id } },
-      );
-      res.status(200).send(newCrop);
-    } else {
-      res.status(401).send('This plot is not available');
-    }
-  } else {
-    res.status(401).send('You are not authorized to add crops to this plot');
-  }
-});
-
 getAllCrops = factory.getAll(Crops);
 
 deleteCrop = catchAsync(async (req, res, next) => {
@@ -103,7 +76,6 @@ getByPlotID = catchAsync(async (req, res, next) => {
 
 module.exports = {
   getAllCrops,
-  addCrops,
   deleteCrop,
   updateCrop,
   getByGardenID,
