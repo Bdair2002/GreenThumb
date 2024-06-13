@@ -1,12 +1,27 @@
 const express = require('express');
 const ArticlesController = require('./../controllers/articlesController');
 const router = express.Router();
-router.post('/addArticle', ArticlesController.addArticle);
-router.patch('/updateArticle', ArticlesController.updateArticle);
-router.put('/updateArticleDescription', ArticlesController.updateArticleDescription);
-router.put('/updateArticleTitle', ArticlesController.updateArticleTitle);
-router.delete('/deleteArticle', ArticlesController.deleteArticle);
-router.get('/getArticles', ArticlesController.findAllArticle);
-router.get('/getArticlesID', ArticlesController.findArticle);
-router.get('/getArticlesOwner', ArticlesController.findArticleOwner);
+const authController = require('./../controllers/authController');
+router.use(authController.protect);
+router.post(
+  '/',
+  ArticlesController.setPublisher,
+  ArticlesController.addArticle,
+);
+router.get('/', ArticlesController.findAllArticle);
+
+router.get('/:id', ArticlesController.findArticle);
+router.get('/publisher/:Publisher_ID', ArticlesController.findByPublisher);
+router.use(authController.restrictTo('user', 'admin'));
+router.patch(
+  '/:id',
+  ArticlesController.checkOwner,
+  ArticlesController.updateArticle,
+);
+router.delete(
+  '/:id',
+  ArticlesController.checkOwner,
+  ArticlesController.deleteArticle,
+);
+
 module.exports = router;
