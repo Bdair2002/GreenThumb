@@ -104,6 +104,10 @@ Empowering Urban Gardening and Sustainable Living
     - Sequelize comes with a built in logger to log SQL queries.
     - Global Util error handler
 
+ 5. **Safety**
+    - We used Limiter to limit packets sent to a any endpoint, maximum 100 requests per minute, to prevent spams and DDOS attacks.
+    - We limited request body size to 10kb, to protect the server from getting overloaded.  
+
 ### Built With :hammer_and_wrench:
 
 [![Node.js][Node.js]][Nodejs-url]
