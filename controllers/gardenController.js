@@ -31,7 +31,7 @@ addGarden = catchAsync(async (req, res, next) => {
     Longitude: Longitude,
   });
   plots.addPlots(newGarden.id, Plots);
-  res.status(200).send(newGarden);
+  res.status(201).send(newGarden);
 });
 
 getAllGardens = factory.getAll(Garden);
@@ -59,58 +59,72 @@ exports.check = catchAsync(async (req, res, next) => {
   }
   return false;
 });
+check1 = catchAsync(async (req, res, next) => {
+  const garden = await Garden.findOne({
+    where: { id: req.body.garden_id },
+  });
+  if (garden.owner_id === owner_id) {
+    return true;
+  }
+  return false;
+});
 
 deleteGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
   Name = req.params.Name;
-  console.log(Name);
-  const garden = await Garden.findOne({
-    where: { Name: Name, owner_id: currentUser },
-  });
+  if (check1) {
+    const garden = await Garden.findOne({
+      where: { Name: Name, owner_id: currentUser },
+    });
 
-  const deleteCrops = await Crops.destroy({
-    where: { Garden_ID: garden.id },
-  });
-  const deletePlots = await Plots.destroy({
-    where: { Garden_ID: garden.id },
-  });
-  const deletGarden = await Garden.destroy({
-    where: { Name: Name, owner_id: currentUser },
-  });
+    const deleteCrops = await Crops.destroy({
+      where: { Garden_ID: garden.id },
+    });
+    const deletePlots = await Plots.destroy({
+      where: { Garden_ID: garden.id },
+    });
+    const deletGarden = await Garden.destroy({
+      where: { Name: Name, owner_id: currentUser },
+    });
 
-  res.status(204).send({ status: 'success' });
+    res.status(204).send({ status: 'success' });
+  } else {
+    res.status(401).send('You are not authorized to delete this garden');
+  }
 });
 updateMyGarden = catchAsync(async (req, res, next) => {
   currentUser = req.user.id;
   Name = req.params.Name;
-  const {
-    NewName,
-    Location,
-    Plots,
-    Sunlight,
-    SoilType,
-    WaterSource,
-    Latitude,
-    Longitude,
-  } = req.body;
+  if (check1) {
+    const {
+      NewName,
+      Location,
+      Sunlight,
+      SoilType,
+      WaterSource,
+      Latitude,
+      Longitude,
+    } = req.body;
 
-  const updateGarden = await Garden.update(
-    {
-      Name: NewName,
-      owner_id: req.user.id,
-      Location: Location,
-      Plots: Plots,
-      Sunlight: Sunlight,
-      SoilType: SoilType,
-      WaterSource: WaterSource,
-      Latitude: Latitude,
-      Longitude: Longitude,
-    },
-    {
-      where: { Name: Name, owner_id: currentUser },
-    },
-  );
-  res.status(201).send(updateGarden);
+    const updateGarden = await Garden.update(
+      {
+        Name: NewName,
+        owner_id: req.user.id,
+        Location: Location,
+        Sunlight: Sunlight,
+        SoilType: SoilType,
+        WaterSource: WaterSource,
+        Latitude: Latitude,
+        Longitude: Longitude,
+      },
+      {
+        where: { Name: Name, owner_id: currentUser },
+      },
+    );
+    res.status(201).send(updateGarden);
+  } else {
+    res.status(401).send('You are not authorized to update this garden');
+  }
 });
 
 function checkOwner(gardenId) {
