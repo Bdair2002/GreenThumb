@@ -27,35 +27,6 @@ Empowering Urban Gardening and Sustainable Living
   :busts_in_silhouette: <a href="https://github.com/Bdair2002/GreenThumb"><img src="https://img.shields.io/github/contributors/Bdair2002/GreenThumb" alt="Contributors"></a> &nbsp;
 </p>
 
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#About-The-Project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project :information_source:
 <strong>GreenThumb</strong> is a collaborative project for the Advanced Software Engineering course at Spring 2024, led by Dr. Amjad AbuHassan. Our mission is to empower urban gardening and promote sustainable living through a robust backend API platform. The project is designed to facilitate community-driven food production, knowledge sharing, and resource optimization among urban gardeners and enthusiasts.
