@@ -1,4 +1,4 @@
-<br />
+![image](https://github.com/Bdair2002/GreenThumb/assets/107470382/8388b23e-cd61-4830-a320-407df23de3db)<br />
 <div align="center">
   <a href="https://github.com/Bdair2002/GreenThumb">
     <img src="public/img/logo-img.png" alt="Logo">
@@ -106,7 +106,10 @@ Empowering Urban Gardening and Sustainable Living
 
  5. **Safety**
     - We used Limiter to limit packets sent to a any endpoint, maximum 100 requests per minute, to prevent spams and DDOS attacks.
-    - We limited request body size to 10kb, to protect the server from getting overloaded.  
+      ![image](https://github.com/Bdair2002/GreenThumb/assets/107470382/632497fe-9ed2-417c-a14c-a9fadf782971)
+
+    - We limited request body size to 10kb, to protect the server from getting overloaded.
+    - We used Validator library to validate email addresses.  
 
 ### Built With :hammer_and_wrench:
 
