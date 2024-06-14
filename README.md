@@ -11,7 +11,7 @@ Empowering Urban Gardening and Sustainable Living
     <a href="https://github.com/Bdair2002/GreenThumb/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=ob8g1kZhxKA">View Demo</a>
     ·
     <a href="https://github.com/Bdair2002/GreenThumb/issues/new">Report Bug</a>
   </p>
