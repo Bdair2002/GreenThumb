@@ -226,10 +226,6 @@ If you prefer to use Docker, follow these steps:
 - **Provider:** [Node Mailer](https://nodemailer.com/)
 - **Description:** API used for sending transactional emails such as account notifications, password resets, etc.
 
-### Note
-
-Please refer to each provider's documentation (replace `#` with actual links) for detailed usage instructions, rate limits, and any additional terms of service.
-
 <!-- USAGE EXAMPLES -->
 ## Usage :bulb:
 
