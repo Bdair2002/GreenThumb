@@ -1,4 +1,3 @@
-![image](https://github.com/Bdair2002/GreenThumb/assets/107470382/8388b23e-cd61-4830-a320-407df23de3db)<br />
 <div align="center">
   <a href="https://github.com/Bdair2002/GreenThumb">
     <img src="public/img/logo-img.png" alt="Logo">
@@ -9,10 +8,10 @@
   <p align="center">
 Empowering Urban Gardening and Sustainable Living
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Bdair2002/GreenThumb/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="">View Demo</a>
     ·
     <a href="https://github.com/Bdair2002/GreenThumb/issues/new">Report Bug</a>
   </p>
